@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
-            width: 1390x;
-            height: 585px;
+            width: 1617px;
+            height: 834px;
         }
         </style>
         <title></title>
@@ -38,7 +38,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-6.8682791608731355,39.19007031241469],[-6.853888000951819,39.21800507596389]]);
+        }).fitBounds([[-6.869260073875143,39.18608336298748],[-6.855554207283417,39.21268789970099]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
@@ -76,7 +76,7 @@
                         <td colspan="2"><strong>Sampling period</strong><br />' + (feature.properties['Sampling period'] !== null ? Autolinker.link(feature.properties['Sampling period'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Sample description</strong><br />' + (feature.properties['Sample description'] !== null ? Autolinker.link(feature.properties['Sample description'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                        <td colspan="2"><strong>Sampling name</strong><br />' + (feature.properties['Sampling name'] !== null ? Autolinker.link(feature.properties['Sampling name'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Sample type</strong><br />' + (feature.properties['Sample type'] !== null ? Autolinker.link(feature.properties['Sample type'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
@@ -88,7 +88,7 @@
                         <td colspan="2"><strong>Description</strong><br />' + (feature.properties['Description'] !== null ? Autolinker.link(feature.properties['Description'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Advice</strong><br />' + (feature.properties['Advice'] !== null ? Autolinker.link(feature.properties['Advice'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                        <td colspan="2"><strong>Treatment option</strong><br />' + (feature.properties['Treatment option'] !== null ? Autolinker.link(feature.properties['Treatment option'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -99,7 +99,7 @@
                 case 'Borehole':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.000000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -115,7 +115,7 @@
                 case 'Bottled water':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -124,14 +124,14 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(45,12,212,1.0)',
+                fillColor: 'rgba(31,0,180,1.0)',
                 interactive: true,
             }
                     break;
                 case 'DAWASA piped supply':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -147,7 +147,7 @@
                 case 'Piezometer':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -163,7 +163,7 @@
                 case 'Rain':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -179,7 +179,7 @@
                 case 'River water':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -195,7 +195,7 @@
                 case 'Shallow well':
                     return {
                 pane: 'pane_watersources_1',
-                radius: 6.8000000000000025,
+                radius: 6.400000000000002,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -205,6 +205,22 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(178,223,138,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_watersources_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(117,211,104,1.0)',
                 interactive: true,
             }
                     break;
@@ -241,7 +257,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'water sources<br /><table><tr><td style="text-align: center;"><img src="legend/watersources_1_Borehole0.png" /></td><td>Borehole</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Bottledwater1.png" /></td><td>Bottled water</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_DAWASApipedsupply2.png" /></td><td>DAWASA piped supply</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Piezometer3.png" /></td><td>Piezometer</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Rain4.png" /></td><td>Rain</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Riverwater5.png" /></td><td>River water</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Shallowwell6.png" /></td><td>Shallow well</td></tr></table>': layer_watersources_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'water sources<br /><table><tr><td style="text-align: center;"><img src="legend/watersources_1_Borehole0.png" /></td><td>Borehole</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Bottledwater1.png" /></td><td>Bottled water</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_DAWASApipedsupply2.png" /></td><td>DAWASA piped supply</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Piezometer3.png" /></td><td>Piezometer</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Rain4.png" /></td><td>Rain</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Riverwater5.png" /></td><td>River water</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_Shallowwell6.png" /></td><td>Shallow well</td></tr><tr><td style="text-align: center;"><img src="legend/watersources_1_7.png" /></td><td></td></tr></table>': layer_watersources_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
             layer: layer_watersources_1,
